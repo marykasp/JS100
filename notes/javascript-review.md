@@ -435,3 +435,118 @@ console.log(Math.floor(Math.random() * 12)); // 10
 
 ## Arrays & Loops
 
+**Arrays** - complex data structure: list of ordered items. Can contain one or more objects that can be any data type. The items that make up an array are called **elements**
+
+```js
+var timeOfDay = [6, 12, "morning"]
+// array that contains both number and string objects
+
+// array literal
+var medicine = [];
+```
+
+**Elements** - the values stored in an array. Elements can be any data type
+
+**Index** - the position of an element in an array. The first element starts at index position 0. 
+
+```js
+var nums = ["thirty", 16, 38]
+nums[0] // thirty
+```
+
+**Loop**- statement that allows you to repeat code multiple times, can iterate over a collection
+
+**Iterating** - each time a loop runs through a block of code. Each pass of the loop is called on **iteration**
+
+`for` loop - loop that iterates through a block of code a designated number of times. `for..of` and `for..in` loop. One iterates over an array and the other iterates of the key:value pairs of an object.
+
+`for...of loop` - type of loop that iterates ovar the values of an array. The loop has access to the elements of an array, not the index. 
+
+```js
+var timeOfDay = [6, 'noon', 8, "monring"];
+for (var time of timeOfDay) {
+  console.log(time)
+}
+```
+
+**Loop body** - the loop section where the statements you want to execute on each loop iteration
+
+`forEach()` - method that is called on an array object, iterates though the elements in the array and is passed a callback function as its argument. `forEach` **passes each element to the function as an argument and runs the function once for each given element.** 
+
+```js
+var timeOfDay = [6, "noon", 8, "morning", "evening", 12];
+
+// is passed a callback function as its argument
+timeOfDay.forEach(function (time, index) { 
+  console.log(`The ${time} element is at position ${index}.`); 
+});
+```
+
+**Modulus operator** - An operator to return the remainder of two numbers divided. The modulus operator uses the percent sign `(%)`. The modulus operator is also called the "**modulo" operator.**
+
+```js
+var candy = 14; 
+var kids = 4; 
+
+console.log(`There are ${candy % kids} pieces of candy remaining.`);
+```
+
+
+
+## Scope
+
+**Scope** - context where varialbes are visible to certain parts of the program. Depends on where variables are declared determines where they can be accessed.
+
+**Context** - refers to the place the code is evaluated and executed - like inside a function or loop
+
+**Global Scope** - context for the whole program. Variables that are global scoped are not located inside a function or another block of code. These variables are available to any part of your program
+
+​	`var` - function scoped, not blocked scope. Will return `undefined` if used before its initialized. All `var` variables that are declared but not initialized are set to `undefined`
+
+`let` - block scoped, cannot access any variables defined inside a block outside that block. Returns a `ReferenceError` if try to access variable before it is intialized
+
+`const` - block scoped and error will be thrown if variable is reassigned
+
+```js
+var numOfDrinks = 5; // global scoped
+
+var drinks = function() {
+  var tea = 6 + numOfDrinks; // can access global variable
+  console.log(tea)
+}
+
+drinks() // 11
+conosle.log(tea) // Reference Error - not defined since variable is function scoped
+
+if(numOfDrinks === 5) {
+  var soda = "lemon-lime"; // block scope
+}
+
+// with var variables can access them outside the block
+soda = "cherry"
+```
+
+**Function Scope** - context inside of a funciton. Variables defined within a function are scoped to that function only
+
+- Ruby method definitions are self contained - create their own inner scope. Cannot access variables outside their scope. But the values/objects of outer scoped variables can be passed in as arguments to the methods - a copy of the reference to the object is passed in as an argument to the method call
+
+**Block Scope** - context inside a block of code, like an `if` statement or loops.
+
+- `var` defined variables can be accessed and modified outside the block even if they were initialized inside the block
+- `let` and `const` variables are **block scoped** - cannot be accessed outside the block where it was initialized
+- `const` - constrain a variable to block scope and **prevent the value from being reassigned**
+  - common to assign arrays and objects to `const` variables - so can't reassign the variable to a new collection but still able to modify the elements that make up the collection
+  - Element Reference - `Array#[]` method can access elements at the specified position - point to where the object is stored in memory, can modify the object, which will mutate the collection as a whole, but the `const` variable is still pointing to the same collection
+  - A collection contains references to the objects that make up the collection - can change the objects in a collection which will mutate the collection as a whole. 
+
+```js
+if(numOfDrinks === 5) {
+  let soda = "lemon-lime"
+};
+
+console.log(soda) // Reference error
+// let declared variables are block scoped
+```
+
+
+
