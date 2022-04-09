@@ -1,3 +1,5 @@
+
+
 # JavaScript Basics
 
 ## History JS
@@ -491,8 +493,6 @@ var kids = 4;
 console.log(`There are ${candy % kids} pieces of candy remaining.`);
 ```
 
-
-
 ## Scope
 
 **Scope** - context where varialbes are visible to certain parts of the program. Depends on where variables are declared determines where they can be accessed.
@@ -548,5 +548,147 @@ console.log(soda) // Reference error
 // let declared variables are block scoped
 ```
 
+## Objects & Methods
 
+**Objects** - A data type used to group multiple properties and their corresponding values into a single, unordered entity. Like an object in real life, a JavaScript object represents a thing with characteristics (properties), like a person, animal, instrument, or house. **An object is a collection of key-value pairs.**
+
+**Properties** - Diﬀerent values of an object. A property represents the diﬀerent characteristics of your object. Properties can be any data type, like a number, string, array, boolean, or function.
+
+**Keys** - An object's unique elements which are used to access its values. Keys are also known as "identiﬁers" or "names." An object's keys must be unique and cannot be duplicated in the same object.
+
+```js
+const cat = {};
+
+cat.name = "Fred"; 
+cat.nickname = "Flooficus"; 
+cat.age = 5; cat.isSleeping = true; 
+cat.favoriteToys = ["spring", "ping pong balls", "bird stuffy"] 
+cat.pet = function () { 
+  return "purrrrrrrr"; 
+}
+```
+
+**Method (object property)** - A function that's a property in an object. Use the return keyword to return the value of the method and make the result available to other parts of your code. Call the function on the object: `object.method()` 
+
+Methods can be added to an object following its creation:
+
+```js
+const cat = {}; 
+cat.pet = function () { 
+  return "purrrrrrrr"; 
+}
+
+const cat = {
+	pet: function () {
+		return "purrrrrrrr";
+} };
+```
+
+**Dot notation** - A syntax to assign or access the property of an object using a period between the object name and property. `object.key` 
+
+**Square Bracket Notation** - syntax to assign or access the property of an object using `[]` between the object name and the key, key needs to be wrapped in quotes. `object["key"]` 
+
+![image-20220409183736229](https://tva1.sinaimg.cn/large/e6c9d24egy1h14a4n72avj20ky06474g.jpg)
+
+![image-20220409183836695](https://tva1.sinaimg.cn/large/e6c9d24egy1h14a5mcwj4j20q204sweq.jpg)
+
+**Object literal** - A collection of key-value pairs inside the object’s curly braces, separated by a comma. The key and value are separated by a colon (:). You can add or change existing properties of an object literal by using either dot or bracket notation and the = assignment operator.
+
+`this` **keyword** - In a method, the `this` keyword allows you to reference another property from the same object. If the method is called on an object, using a function expression, the `this` keyword will point/reference the object it is called on. Therefore can access properties of the object inside the function by using `this.keyName` 
+
+An example of the `this` keyword used with a method that's outside the object declaration:
+
+```js
+const house = { windows: 20 };
+
+// Adding a method to the object outside the object declaration/literal
+house.windowWash = function () { 
+  if (this.windows > 15) { 
+    return `That's a lot of windows to wash!`; 
+  } 
+};
+
+console.log(house.windowWash());
+
+// Method that is declared on the object literal
+const house = { 
+  windows: 20, 
+  windowWash: function () { 
+    if (this.windows > 15) { 
+      return `That's a lot of windows to wash!`; 
+    } 
+  };
+```
+
+
+
+**Factory functions** - Patterns to create multiple objects. Factory functions let you quickly build several objects that share the same characteristics, AKA properties. Act as a blueprint to make similar objects. You must return your object at the bottom of your factory function. You'll use factory functions when you want to create and manage multiple objects that have the same characteristics (e.g., color) that are expressed diﬀerently (e.g., blue, green, yellow).
+
+```js
+const createContact = function () { 
+  const contact = { 
+    name: "Noelle Silva", 
+    phoneNum: "555-555-1234", 
+    isNew: true, 
+    message: function () { 
+      this.isNew = true; 
+      console.log("You've added a new contact!"); 
+    } 
+  }; 
+  return contact;  // returnn object from function
+};
+
+// pass factory function parameters, then can create objects with different values 
+// based onn the arguments passed in when the function is invoked
+const createContact = function (name, phone) { 
+  const contact = { 
+    name: name,
+		phoneNum: phone, 
+    isNew: true, 
+    message: function () { 
+      this.isNew = true; 
+      console.log("You've added a new contact!"); 
+    } 
+  }; 
+  return contact; 
+};
+
+// create two new objects with different values
+const contact1 = createContact("Noelle Silva", "555-555-1234"); 
+const contact2 = createContact("Yami Sukehiro", "555-321-5555");
+```
+
+You can provide **parameters** to your factory function in order to make your object more ﬂexible and easy to reuse:
+
+`for...in loop` A type of for loop that will allow you to loop over an object's key-value pairs. When looping over objects, you may want to access just the keys, just the values, or both the keys and the values.
+
+```js
+for(let key in contact1) {
+  console.log(key, contact1[key])
+}
+
+// name 'Noella Silva'
+// phoneNum 555-555-1234
+// isNew true 
+// message f message() {}
+```
+
+To loop through multiple objects, add the objects to an array and then loop through the array using the `for...of loop `(Lesson 8). After the for...of loop, nest the for...in loop to access the object's key, value, or keys and values.
+
+```js
+const contact1 = createContact("Noelle Silva", "555-555-1234"); 
+const contact2 = createContact("Yami Sukehiro", "555-321-5555");
+
+// add each object to a new array
+const contactsArray = [contact1, contact2];
+
+// iterate over each object in the contactsArray
+for (let contact of contactsArray) { 
+  // iterate over the properties of each object
+  for (let key in contact) {
+    // log the key and the value to the console
+		console.log(key, contact[key]); 
+  }
+}
+```
 
