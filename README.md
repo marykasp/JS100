@@ -4,11 +4,8 @@ Notes are from [Skillcrush](https://skillcrush.com) course and Launch School int
 
 ## JavaScript Intro Book Exercises
 
-- [All Exercises - markdown](./JS-intro-book-exercises.md)
-
-- [basics](./ls-JS100/basics)
-- [arrays](./ls-JS100/arrays)
-- [flow-control](./ls-JS100/flow-control)
+- [All Exercises - markdown](./notes/JS-intro-book-exercises.md)
+- [JavaScript Book Exercises](./JavaScript-intro-book-exercises/README.md)
 
 ## Notes
 

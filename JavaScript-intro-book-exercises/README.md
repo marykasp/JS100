@@ -6,23 +6,23 @@ Notes for [Launch School's Introduction to Programming with JavaScript](https://
 
 - Preparations
 
-- [Basics](./basics/notes.md)
+- [Basics](./basics/basics.md)
 
-- [Variables](./variables/notes.md)
+- [Variables](./variables/variables.md)
 
-- [Input/Output](./input-output/notes.md)
+- [Input/Output](./input-output/input-output.md)
 
-- [Functions](./functions/notes.md)
+- [Functions](./functions/functions.md)
 
-- [Flow Control](./flow-control/notes.md)
+- [Flow Control](./flow-control/flow-control.md)
 
-- [Loops & Iterators](./loops-iterators/notes.md)
+- [Loops & Iterators](./loops-iterators/loops.md)
 
-- [Array](./arrays/notes.md)
+- [Array](./arrays/arrays.md)
 
-- [Objects](./objects/notes.md)
+- [Objects](./objects/objects.md)
 
-- [More Stuff](./more-stuff/notes.md)
+- [More Stuff](./more-stuff/more-stuff.md)
 
   
 
