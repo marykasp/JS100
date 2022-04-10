@@ -4,8 +4,6 @@
 
 **Iteration** looping through a loop body
 
-
-
 ## while Loops
 
 - `while` loop executes a code block for as long as the conditional expression remains truthy 
@@ -21,8 +19,6 @@
     counter += 1;
   }
   ```
-
-  
 
 - **increment operator** `++` increments its operand by 1
 - **decrement operator** `--` decrements its operand by 1
@@ -75,8 +71,6 @@
 - `break` lets you terminate a loop early 
   - when searching an array for a specific value, can stop iterating through the array once you find it 
 
-
-
 ## Array Iteration
 
 - can use several built in array methods that iterate over elements in an array without using a loop
@@ -98,7 +92,6 @@
   names.forEach(name => console.log(name))
   ```
 
-  
 
 ## Recursion
 

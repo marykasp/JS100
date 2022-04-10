@@ -2,13 +2,13 @@
 
 Notes are from [Skillcrush](https://skillcrush.com) course and Launch School intro book
 
-## Launch School Exercises
+## JavaScript Intro Book Exercises
+
+- [All Exercises - markdown](./JS-intro-book-exercises.md)
 
 - [basics](./ls-JS100/basics)
 - [arrays](./ls-JS100/arrays)
 - [flow-control](./ls-JS100/flow-control)
-
-
 
 ## Notes
 
