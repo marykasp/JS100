@@ -692,3 +692,107 @@ for (let contact of contactsArray) {
 }
 ```
 
+## APIs
+
+**Application programming interface (API)** - way for two applications, program and external source to talk to each other and share information. There are a few protocols, rules, when follow for working with APIs. As long as you follow the protocols you can access and use daata from the APIs.
+
+- grab data from other sources to populate your app
+
+**RESTful API** - use HTTP protocol - (hyper text transfer protocol) requests like those used in browser to access a websites - used to get data from an external source to be displayed in your program
+
+- each API has instructions of how to talk to the API to get the data from that API
+- need to read each API documentation
+
+**Asynchronous** - means code can run independently of main program flow
+
+- **Async Functions** - allow you to `fetch` data from an API, wait for the completed response, and then work with the data. use `async` keyword
+- `await` tells the program to wait on that line of code until the data is retrieved
+- `fetch` method allows you to get data over a network. like the data you retrieve from the API
+  - API creator determines the URL you pass in as an argument to the `fetch` method
+  - **endpoint** - part of the **API URL** that specifies the type of information you want
+- **JSON file** - type of file used for exchanging data on the web: JavaScript Object Notation
+  - the response will be similar to a JS object - having properties and key:value pairs
+  - need to convert from JSON to JS object so you can manipulate the data in your code - `json()` is called on a JSON variable and converts it to JS object
+  - all the data will now be objects
+
+```js
+const getShows = async function() {
+  const showRequest = await fetch("https://api.tvmaze.com/schedule/web");
+  const data = await showRequest.json();
+  console.log(showRequest);
+};
+
+getShows(); // call async function
+```
+
+### JSON Files
+
+Data you pull from an API will be written in JSON. **JSON files** are a type of text file used for exchanging data, which most programming languages can interpret. Files end in a `.json` file extension.
+
+JSON files look a lot like objects - they have properties and key-value pairs. 
+
+### REST APIs
+
+For your program to work with an API it needs to follow specific protocol which enable communication between the API and your program. There are different types of protocols, but the most common is called the REST API procol. They make use of HTTP requests
+
+**API Documentation**
+
+To find out the API protocols, you need to dive ino the REST APIs documenation. You will find:
+
+- What web address is the API available at? What address can your program call to request data from the API
+- Are there parameters available to be used in the request? 
+- Is there any specific info that your program needs to send in with your request?
+- Is there a need for your program to authenticate itself before acccessing the data? If required how do you authenticate? - REST APIs don't require authentication 
+
+### Endpoints & Parameters
+
+To access specific data from an API you need to review the documentation fo find which endpoints you need to add to the web address to request the data. And need to know if the endpoints accepts parameters
+
+**Endpoint** - end of the API address that determines the type of info available
+
+`https://quote-garden.herokuapp.com/api/v3`
+
+To pull all the quotes data you'll add an endpoint to the url
+
+`https://quote-garden.herokuapp.com/api/v3/quotes`
+
+To get a single random quote you will add another endpoint
+
+`https://quote-garden.herokuapp.com/api/v3/quotes/random`
+
+**Parameters**
+
+Pulling data from an endpoint can pull a lot of data. Maybe you need specific information. **API parameters** are placeholders for data. After the endpoint, you will add the parameters.
+
+Add a `?` after the endpoint, then include the parameters. The documentation will let you know what data type you need to enter for each parameter - ex. string. 
+
+`https://quote-garden.herokuapp.com/api/v3/quotes?author=beyonce`
+
+If the parameter has more than one word add characters `%20` to fill the space between words
+
+Can also chain parameters together by separating them with an ampersand `&` 
+
+`https://quote-garden.herokuapp.com/api/v3/quotes?author=maya%20angelou&limit=1`
+
+
+
+This will retrieve specific data from an API using endpoints and parameters. 
+
+### Fetch Method
+
+`fetch()` method allows you to get resources over a network - retrieve data from an API
+
+**async keyword** enables asynchronous communication between your program and the API. Use the keyword to create an `async function` to get data from an API and then wait for the completed response. Once the response is complete then you can modify the data.
+
+```js
+const getData = async function() {
+  // variable to hold response from the API
+  // pass the fetch method the API URL including endpoints and paraemters
+  const res = await fetch("https://quote-garden.herokuapp.com/api/v3/quotes?author=beyonce");
+  const data = await res.json();
+}
+```
+
+- When fetching the data the program needs to wait for the function to finish before assigning the value to the `res` variable, so add `await` keyword before `fetch()` . Tells the program to wait on that line until the API data is received 
+- `res` variable contains the API call response - contains all sorts of data including methods that allow your program to parse and use the body of data
+- `.json()` method transforms the JSON data into a JS object - also a asynchronous action so need to use the `await` keyword
