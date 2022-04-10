@@ -127,5 +127,91 @@ Evalues to `true`. Javascript when comparing strings will compare them character
 Write a program named `greeter.js` that greets `'Victor'` three times. Your program should use a variable and not hard code the string value `'Victor'` in each greeting.
 
 ```js
+// write a program that greets Victor three times
+
+let firstName = 'Victor';
+
+// using template literals - string interpolation
+console.log(`Good Morning, ${firstName}.`);
+console.log(`Good Afternoon, ${firstName}.`);
+console.log(`Good Evening, ${firstName}.`);
+
+// using string concatenation
+console.log('Good Morning, ' + firstName + '.');
+console.log('Good Afternoon, ' + firstName + '.');
+console.log('Good Evening, ' + firstName + '.');
 ```
+
+#### Ex2.
+
+/write a program that includes someone's age and then calculates and reports the future age in 10, 20, 30 and 40 years
+
+```js
+let age = 20;
+
+console.log(`In 10 years, you will be ${age + 10} years old.`);
+console.log(`In 20 years, you will be ${age + 20} years old.`);
+console.log(`In 30 years, you will be ${age + 30} years old.`);
+console.log(`In 40 years, you will be ${age + 40} years old.`);
+```
+
+#### Ex3.
+
+```js
+{
+  let foo = 'bar'; // let is block scoped
+}
+
+console.log(foo);
+```
+
+variables declared with `let` keyword are **block scoped** which means you cannot access the variable outside the block. Therefore this code will raise an error since `foo` is out of scope. Outside the block `foo` doesn't exist. 
+
+#### Ex.4
+
+```js
+const NAME = 'Victor';
+console.log('Good Morning, ' + NAME);
+console.log('Good Afternoon, ' + NAME);
+console.log('Good Evening, ' + NAME);
+
+NAME = 'Joe'; // will throw an error
+console.log('Good Morning, ' + NAME);
+console.log('Good Afternoon, ' + NAME);
+console.log('Good Evening, ' + NAME);
+```
+
+`const` variables are block scoped and they cannot be reassigned. The first three console.logs will output the string concatenationns. On line 6 an error will be thrown since can't reassign a value to a `const` variable
+
+#### Ex5.
+
+```js
+let foo = 'bar';
+{
+  let foo = 'qux';
+}
+
+console.log(foo); // 'bar'
+```
+
+`let` variables are block scoped therefore `console.log` outside the block does not have access to the `foo` variable declared inside the block. It does have access to the global scoped `foo` variable with a string object value of `bar`.
+
+Line 1 initializes a variable named `foo` with a string value of `bar`. Line 2 starts a block, which creates a block scope for `let` variables. The variable on line 1 is still visible, but line 3 declares a new variable named `foo` that shadows hides the variable from line 1. This is similar to variable shadowing in Ruby where if a block following a method invocation has the same parameter name as an outer scoped local variable, the outer scoped variable will be hidden to the block. The second variable gets initialized to a string value of `qux` but this goes out of scope when the block ends. 
+
+Variable shadowing occurs when a variable declared in a block has the same name as an outer scoped variable - thereby preventing the block from accessing the outer variable.
+
+#### Ex6.
+
+```js
+const FOO = 'bar';
+{
+  const FOO = 'qux';
+}
+
+console.log(FOO); 
+```
+
+This is similar to the variable shadowing just discussed. Using `const` instead of `let` - since the two variables are separate entities since the outer variable is hidden due to shadowing, no error occurs.
+
+## Input / Output
 
